@@ -1,0 +1,54 @@
+# ╔══════════════════════════════════════════════════════════════════════════════╗
+# ║                                 PYTHON                                       ║
+# ╚══════════════════════════════════════════════════════════════════════════════╝
+
+# Ignora el entorno virtual de Python, ya que contiene dependencias específicas del entorno y no debe versionarse
+backend/venv/
+
+# Ignora archivos de caché y compilación de Python, generados automáticamente y sin utilidad en el control de versiones
+__pycache__/
+*.pyc
+
+# Ignora el archivo de variables de entorno, ya que puede contener credenciales sensibles
+.env
+
+# ╔══════════════════════════════════════════════════════════════════════════════╗
+# ║                               NODE / VUE                                     ║
+# ╚══════════════════════════════════════════════════════════════════════════════╝
+
+# Ignora las dependencias de Node.js, que se instalan con npm/yarn y no deben subirse al repositorio
+frontend/node_modules/
+
+# Ignora archivos de salida de compilación del frontend, ya que se generan automáticamente al construir el proyecto
+frontend/dist/
+frontend/dist-ssr/
+
+# Ignora archivos de configuración local de herramientas como Vite o Next.js, que pueden variar entre desarrolladores
+*.local
+
+# Ignora archivos de logs, generados por el sistema o herramientas y que no aportan valor al código fuente
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ╔══════════════════════════════════════════════════════════════════════════════╗
+# ║                           EDITOR Y SISTEMA                                   ║
+# ╚══════════════════════════════════════════════════════════════════════════════╝
+
+# Ignora configuraciones locales de editores y sistemas operativos, que no deben compartirse en el repositorio
+.vscode/
+!.vscode/extensions.json  # Excepto este archivo, que puede ser útil compartir
+.idea/
+.DS_Store
+
+# Ignora archivos de configuración de Visual Studio (Windows), generados automáticamente por el IDE
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
