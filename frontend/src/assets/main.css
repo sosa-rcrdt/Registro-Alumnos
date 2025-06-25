@@ -1,0 +1,5 @@
+/* Importar las directivas principales de Tailwind CSS para incluir los estilos base, componentes y utilidades */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
