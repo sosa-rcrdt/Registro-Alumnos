@@ -18,9 +18,6 @@ app.add_middleware(
     allow_headers=["*"],  # Permite todas las cabeceras
 )
 
-# Crea automáticamente las tablas en la base de datos según los modelos definidos (solo recomendable en desarrollo)
-Base.metadata.create_all(bind=engine)
-
 # Incluye las rutas definidas en el router de alumnos
 app.include_router(alumno_router.router)
 

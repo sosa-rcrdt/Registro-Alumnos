@@ -10,3 +10,4 @@ class Alumno(Base):
     correo = Column(String(100), nullable = False, unique = True)  # Columna para el correo, único y no nulo
     carrera = Column(String(50), nullable = False)  # Columna para la carrera, no puede ser nulo
     semestre = Column(Integer, nullable = False)  # Columna para el semestre, no puede ser nulo
+

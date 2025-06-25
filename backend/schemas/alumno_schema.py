@@ -27,3 +27,4 @@ class AlumnoOut(AlumnoBase):
         from_attributes = True  # Permite que Pydantic trabaje con objetos ORM de SQLAlchemy en Pydantic v2
 
 # Un esquema Pydantic es una forma de definir la estructura de los datos que se esperan en las solicitudes y respuestas de la API, asegurando que cumplan con ciertos requisitos y tipos.
+

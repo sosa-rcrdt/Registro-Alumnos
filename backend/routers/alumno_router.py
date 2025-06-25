@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException  # APIRouter para definir rutas, Depends para inyección de dependencias, HTTPException para manejar errores HTTP
 from sqlalchemy.orm import Session  # Importa la clase Session para interactuar con la base de datos
+from sqlalchemy.exc import IntegrityError  # Importa para capturar errores de integridad
 from database import SessionLocal  # Importa la clase de sesión configurada para la base de datos
 from models.alumno import Alumno  # Importa el modelo Alumno
 from schemas.alumno_schema import AlumnoCreate, AlumnoUpdate, AlumnoOut  # Importa los esquemas Pydantic
@@ -26,7 +27,11 @@ def obtener_alumnos(db: Session = Depends(get_db)):
 def crear_alumno(alumno: AlumnoCreate, db: Session = Depends(get_db)):
     nuevo = Alumno(**alumno.dict())
     db.add(nuevo)
-    db.commit()
+    try:
+        db.commit()
+    except IntegrityError:
+        db.rollback() # Deshace los cambios si hay un error de integridad, como un correo duplicado
+        raise HTTPException(status_code=409, detail="El correo ya está registrado")
     db.refresh(nuevo)
     return nuevo
 
@@ -36,7 +41,6 @@ def actualizar_alumno(alumno_id: int, alumno_data: AlumnoUpdate, db: Session = D
     alumno = db.query(Alumno).filter(Alumno.id == alumno_id).first()
     if not alumno:
         raise HTTPException(status_code=404, detail="Alumno no encontrado")
-    # Actualiza solo los campos enviados en la petición
     for key, value in alumno_data.dict(exclude_unset=True).items():
         setattr(alumno, key, value)
     db.commit()
