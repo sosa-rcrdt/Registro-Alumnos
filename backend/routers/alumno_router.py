@@ -57,3 +57,11 @@ def eliminar_alumno(alumno_id: int, db: Session = Depends(get_db)):
     db.commit()  # Guarda los cambios en la base de datos
     return {"mensaje": "Alumno eliminado"}  # Devuelve un mensaje de confirmación
 
+# Endpoint para obtener un alumno por su ID
+@router.get("/{alumno_id}", response_model=AlumnoOut)
+def obtener_alumno(alumno_id: int, db: Session = Depends(get_db)):
+    alumno = db.query(Alumno).filter(Alumno.id == alumno_id).first()
+    if not alumno:
+        raise HTTPException(status_code=404, detail="Alumno no encontrado")
+    return alumno
+
