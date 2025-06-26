@@ -1,5 +1,6 @@
 <template>
-  <div class="min-h-screen bg-gray-100 flex items-center justify-center">
-    <h1 class="text-4xl font-bold text-blue-600">¡Tailwind funciona! 🎉</h1>
-  </div>
+  <main class="min-h-screen bg-blue-100 p-4"> <!-- Contenedor principal de la aplicación -->
+    <router-view /> <!-- Aquí se renderizarán las vistas según la ruta actual -->
+  </main>
 </template>
+
